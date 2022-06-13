@@ -1,9 +1,7 @@
-# Align ref and coord
+# Run workflow
 
-```sh
-mafft --auto intermediate/joint.fasta >alignment/joint_aligned.fasta
+```
+snakemake -c10 -pr pick_ancestral_sequence
 ```
 
-## Create ref in coord coordinates
-
-Run script
+The output sequence will be in `output/ref_to_coord.fasta`
