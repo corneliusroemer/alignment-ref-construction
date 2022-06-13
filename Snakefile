@@ -25,7 +25,7 @@ rule infer_ancestors:
     input: 
         tree = rules.tree.output,
         alignment = rules.align_fastas.output
-    output: directory("build/ancestral_reconstruction/ancestral_sequences.fasta")
+    output: "build/ancestral_reconstruction/ancestral_sequences.fasta"
     shell: """
         treetime ancestral \
             --aln {input.alignment}\
@@ -48,7 +48,7 @@ rule pick_ancestral_sequence:
         tree = rules.tree_with_ancestors.output,
         mpx_sequences = "input/mpx/mpx_assortment.fasta",
         ancestral = "build/ancestral_reconstruction/ancestral_sequences.fasta"
-    output: "build/ancestral_sequence.fasta"
+    output: "output/ref_to_coord.fasta"
     shell: """
         python pick_ancestral_sequence.py \
             --tree {input.tree} \
